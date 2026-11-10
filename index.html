@@ -16,7 +16,7 @@
     .page{display:none}.page.active{display:block}.empty{text-align:center;padding:42px 15px;color:var(--muted)}.empty .big{font-size:55px;margin-bottom:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:12px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.cartitem{display:flex;align-items:center;gap:11px}.thumb{width:58px;height:58px;border-radius:14px;background:#302735;display:grid;place-items:center;font-size:32px;flex-shrink:0}.qty{display:flex;align-items:center;gap:9px}.qty button{width:27px;height:27px;border-radius:9px;background:var(--panel2);color:white}.primary{background:linear-gradient(100deg,var(--accent),#ffcf7e);color:#24170a;border-radius:13px;padding:13px 16px;font-weight:850;width:100%}.secondary{background:var(--panel2);color:white;border:1px solid var(--line);border-radius:12px;padding:10px 13px}.danger{color:#ff8798;background:#42232c;border-radius:10px;padding:7px 10px}
     label{display:block;font-size:12px;color:#d6d2dc;margin:12px 0 6px}input,textarea{width:100%;background:#111116;border:1px solid var(--line);border-radius:11px;padding:12px;color:white;outline:none}input:focus,textarea:focus{border-color:var(--accent)}textarea{resize:vertical;min-height:76px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.total{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.pay{border:1px solid #8a6737;background:#342719;border-radius:13px;padding:12px;display:flex;align-items:center;gap:10px;margin:12px 0}.pay input{width:auto;accent-color:var(--accent)}
     nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);background:#191820f5;backdrop-filter:blur(15px);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 7px calc(9px + env(safe-area-inset-bottom));z-index:10}.navbtn{background:transparent;color:var(--muted);font-size:10px;display:grid;gap:3px;justify-items:center;min-width:58px}.navbtn span{font-size:21px}.navbtn.active{color:var(--accent);font-weight:800}
-    .authwrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top,#44293b,#101014 55%)}.auth{width:min(430px,100%);background:#1b1b22;border:1px solid var(--line);border-radius:23px;padding:22px}.authlogo{text-align:center;font-size:48px}.auth h2{text-align:center;margin:5px 0}.auth p{text-align:center;color:var(--muted);font-size:12px}.tabs{display:flex;background:#111116;padding:4px;border-radius:12px;margin:18px 0}.tabs button{flex:1;background:transparent;color:var(--muted);padding:9px;border-radius:9px}.tabs button.active{background:var(--accent);color:#24170a;font-weight:800}.otpbox{display:none}.hint{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#f4f0e8;color:#211b16;padding:11px 16px;border-radius:12px;box-shadow:0 8px 25px #0008;z-index:30;font-size:13px;display:none;max-width:90%;text-align:center}.orderstatus{font-size:11px;color:#f7c77c;background:#3b3020;padding:5px 8px;border-radius:20px}.busy{opacity:.65;pointer-events:none}
+    .authwrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top,#44293b,#101014 55%)}.auth{width:min(430px,100%);background:#1b1b22;border:1px solid var(--line);border-radius:23px;padding:22px}.authlogo{text-align:center;font-size:48px}.auth h2{text-align:center;margin:5px 0}.auth p{text-align:center;color:var(--muted);font-size:12px}.tabs{display:flex;background:#111116;padding:4px;border-radius:12px;margin:18px 0}.tabs button{flex:1;background:transparent;color:var(--muted);padding:9px;border-radius:9px}.tabs button.active{background:var(--accent);color:#24170a;font-weight:800}.hint{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#f4f0e8;color:#211b16;padding:11px 16px;border-radius:12px;box-shadow:0 8px 25px #0008;z-index:30;font-size:13px;display:none;max-width:90%;text-align:center}.orderstatus{font-size:11px;color:#f7c77c;background:#3b3020;padding:5px 8px;border-radius:20px}.google-btn{background:white;color:#333;font-weight:bold;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:10px}
     @media(min-width:520px){body{background:#08080a}.app{box-shadow:0 0 50px #0008}}
   </style>
 </head>
@@ -25,14 +25,15 @@
   <div class="authlogo">🍦</div><h2>Urban Ice Cream</h2><p>পছন্দের আইসক্রিম, এখন আপনার হাতেই</p>
   <div class="tabs"><button id="loginTab" class="active" type="button" onclick="setAuthMode('login')">লগইন</button><button id="registerTab" type="button" onclick="setAuthMode('register')">অ্যাকাউন্ট খুলুন</button></div>
   <form id="authForm">
-    <div id="nameField" style="display:none"><label>আপনার নাম</label><input id="authName" placeholder="সম্পূর্ণ নাম" autocomplete="name" /></div>
-    <label>মোবাইল নম্বর</label><input id="authPhone" type="tel" placeholder="01XXXXXXXXX" required autocomplete="tel" />
-    <button class="primary" style="margin-top:18px" id="sendOtpBtn" type="submit">SMS OTP পাঠান</button>
+    <div id="nameField" style="display:none"><label>আপনার নাম</label><input id="authName" placeholder="সম্পূর্ণ নাম" /></div>
+    <label>ইমেল এড্রেস</label><input id="authEmail" type="email" placeholder="example@gmail.com" required autocomplete="email" />
+    <label>পাসওয়ার্ড</label><input id="authPassword" type="password" placeholder="কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড" required autocomplete="current-password" />
+    <button class="primary" style="margin-top:18px" id="authSubmitBtn" type="submit">লগইন করুন</button>
   </form>
-  <div id="otpBox" class="otpbox"><label>SMS-এ পাওয়া ৬ সংখ্যার OTP</label><input id="otpCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="৬ সংখ্যার কোড"/><button class="primary" style="margin-top:12px" id="verifyOtpBtn" type="button" onclick="verifyOtp()">OTP যাচাই করে প্রবেশ করুন</button><button class="secondary" style="width:100%;margin-top:9px" type="button" onclick="resetOtp()">নম্বর পরিবর্তন করুন</button></div>
-  <div id="recaptcha-container"></div>
-  <p class="hint">আপনার নম্বরে Firebase-এর মাধ্যমে যাচাইকরণ কোড পাঠানো হবে। SMS চার্জ প্রযোজ্য হতে পারে।</p>
+  <button class="secondary google-btn" style="width:100%" type="button" onclick="loginWithGoogle()">🌐 Google দিয়ে প্রবেশ করুন</button>
+  <p class="hint" style="margin-top:15px;text-align:center">ইমেল বা গুগল অ্যাকাউন্ট দিয়ে খুব সহজেই প্রবেশ করতে পারবেন।</p>
 </div></div>
+
 <div id="app" class="app" style="display:none">
   <header><div class="brand"><div class="logo">🍦</div><div><b>Urban Ice Cream</b><small>Sweet moments, delivered</small></div></div><button class="iconbtn" onclick="showPage('cart')">🛒 <span id="cartCount" class="count">0</span></button></header>
   <main>
@@ -42,14 +43,15 @@
     <section id="cartPage" class="page"><div class="sectionhead"><h3>আপনার কার্ট 🛒</h3><span class="muted">আপনার পছন্দের আইসক্রিম</span></div><div id="cartItems"></div><div id="cartSummary"></div></section>
     <section id="checkoutPage" class="page"><div class="sectionhead"><h3>ডেলিভারি তথ্য 📦</h3><span class="muted">অর্ডার সম্পন্ন করুন</span></div><form id="checkoutForm"><div class="card"><b>আপনার ঠিকানা</b><label>গ্রাহকের নাম</label><input id="deliveryName" required placeholder="আপনার নাম"/><label>মোবাইল নম্বর</label><input id="deliveryPhone" required type="tel" placeholder="01XXXXXXXXX"/><div class="formgrid"><div><label>জেলা</label><input id="district" required placeholder="জেলা"/></div><div><label>উপজেলা / থানা</label><input id="areaThana" required placeholder="উপজেলা / থানা"/></div></div><label>এলাকা / মহল্লা</label><input id="locality" required placeholder="এলাকা / মহল্লা"/><label>বাসা নম্বর ও সম্পূর্ণ ঠিকানা</label><textarea id="fullAddress" required placeholder="বাসা/রোড নম্বরসহ বিস্তারিত ঠিকানা লিখুন"></textarea><label>অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label><textarea id="instructions" placeholder="যেমন: বাসার সামনে এসে ফোন করবেন"></textarea></div><div class="card"><b>পেমেন্ট পদ্ধতি</b><div class="pay"><span>💵</span><div><b>Cash on Delivery</b><div class="muted">পণ্য হাতে পেয়ে নগদ টাকা পরিশোধ করুন</div></div></div><div id="checkoutTotal"></div></div><button class="primary" type="submit">অর্ডার কনফার্ম করুন</button><button class="secondary" type="button" style="width:100%;margin-top:9px" onclick="showPage('cart')">কার্টে ফিরে যান</button></form></section>
     <section id="ordersPage" class="page"><div class="sectionhead"><h3>আমার অর্ডার 📋</h3></div><div id="ordersList"></div></section>
-    <section id="profilePage" class="page"><div class="sectionhead"><h3>আমার প্রোফাইল 👤</h3></div><div class="card"><div class="row"><div><b id="profileName"></b><div class="muted" id="profilePhone"></div></div><div style="font-size:38px">👤</div></div></div><div class="card"><div class="row"><span>মোট অর্ডার</span><b id="profileOrders">0</b></div></div><button class="secondary" style="width:100%" onclick="logout()">লগআউট</button></section>
+    <section id="profilePage" class="page"><div class="sectionhead"><h3>আমার প্রোফাইল 👤</h3></div><div class="card"><div class="row"><div><b id="profileName"></b><div class="muted" id="profileEmail"></div></div><div style="font-size:38px">👤</div></div></div><div class="card"><div class="row"><span>মোট অর্ডার</span><b id="profileOrders">0</b></div></div><button class="secondary" style="width:100%" onclick="logout()">লগআউট</button></section>
   </main>
   <nav><button class="navbtn active" data-page="home" onclick="showPage('home')"><span>🏠</span>হোম</button><button class="navbtn" data-page="cart" onclick="showPage('cart')"><span>🛒</span>কার্ট</button><button class="navbtn" data-page="orders" onclick="showPage('orders')"><span>📦</span>অর্ডার</button><button class="navbtn" data-page="profile" onclick="showPage('profile')"><span>👤</span>প্রোফাইল</button></nav>
 </div><div id="toast" class="toast"></div>
+
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, RecaptchaVerifier, signInWithPhoneNumber, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-  import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyC-9vXTkoh0pksk8DS67kNVELF_WezKbG0",
@@ -61,8 +63,10 @@
     appId: "1:399819980252:web:21566dfeeaa3811a01e319",
     measurementId: "G-EXZXY4N2RP"
   };
-  const firebaseApp=initializeApp(firebaseConfig), auth=getAuth(firebaseApp), db=getFirestore(firebaseApp);
-  const PRODUCTS=[
+
+  const firebaseApp = initializeApp(firebaseConfig), auth = getAuth(firebaseApp), db = getFirestore(firebaseApp);
+  
+  const PRODUCTS = [
     {id:1,name:"ভ্যানিলা কাপ",desc:"ক্রিমি ভ্যানিলা স্বাদের ক্লাসিক আইসক্রিম",price:60,emoji:"🍦",cat:"কাপ আইসক্রিম"},
     {id:2,name:"চকলেট আইসক্রিম",desc:"সমৃদ্ধ চকলেটের মজাদার স্বাদ",price:80,emoji:"🍫",cat:"চকলেট"},
     {id:3,name:"স্ট্রবেরি আইসক্রিম",desc:"মিষ্টি স্ট্রবেরির মন মাতানো স্বাদ",price:75,emoji:"🍓",cat:"ফ্রুট"},
@@ -72,36 +76,266 @@
     {id:7,name:"চকলেট সানডে",desc:"চকলেট সস ও আইসক্রিমের দারুণ মিশ্রণ",price:120,emoji:"🍨",cat:"চকলেট"},
     {id:8,name:"মিক্সড ফ্রুট কাপ",desc:"বিভিন্ন ফলের মজাদার স্বাদ",price:100,emoji:"🍨",cat:"ফ্রুট"}
   ];
-  const money=n=>"৳"+Number(n).toLocaleString("bn-BD");
-  let authMode="login",confirmationResult=null,recaptchaVerifier=null,currentUser=null,userProfile=null,activeCategory="সব",cart={},page="home";
-  const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
-  const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display="none",2800)}
-  window.setAuthMode=mode=>{authMode=mode;document.getElementById("loginTab").classList.toggle("active",mode==="login");document.getElementById("registerTab").classList.toggle("active",mode==="register");document.getElementById("nameField").style.display=mode==="register"?"block":"none";document.getElementById("authName").required=mode==="register"};
-  function toE164(phone){const p=phone.replace(/[\s-]/g,"");if(/^01\d{9}$/.test(p))return "+88"+p;if(/^8801\d{9}$/.test(p))return "+"+p;if(/^\+8801\d{9}$/.test(p))return p;throw new Error("সঠিক বাংলাদেশি মোবাইল নম্বর দিন (01XXXXXXXXX)")}
-  function resetRecaptcha(){if(recaptchaVerifier){try{recaptchaVerifier.clear()}catch{}recaptchaVerifier=null}recaptchaVerifier=new RecaptchaVerifier(auth,"recaptcha-container",{size:"invisible",callback:()=>{}})}
-  document.getElementById("authForm").addEventListener("submit",async e=>{e.preventDefault();const btn=document.getElementById("sendOtpBtn");btn.disabled=true;btn.textContent="পাঠানো হচ্ছে...";try{const raw=document.getElementById("authPhone").value.trim();const phone=toE164(raw);const name=document.getElementById("authName").value.trim();if(authMode==="register"&&!name)throw new Error("আপনার নাম লিখুন");resetRecaptcha();confirmationResult=await signInWithPhoneNumber(auth,phone,recaptchaVerifier);document.getElementById("otpBox").style.display="block";document.getElementById("authPhone").dataset.e164=phone;document.getElementById("authPhone").disabled=true;document.getElementById("authName").disabled=true;toast("OTP পাঠানো হয়েছে। SMS দেখুন।");}catch(err){console.error(err);toast(firebaseMessage(err));if(recaptchaVerifier){try{recaptchaVerifier.clear()}catch{}recaptchaVerifier=null}}finally{btn.disabled=false;btn.textContent="SMS OTP পাঠান"}});
-  window.verifyOtp=async()=>{const code=document.getElementById("otpCode").value.trim();if(!/^\d{6}$/.test(code)){toast("৬ সংখ্যার OTP লিখুন");return}const btn=document.getElementById("verifyOtpBtn");btn.disabled=true;btn.textContent="যাচাই হচ্ছে...";try{if(!confirmationResult)throw new Error("আগে OTP পাঠান");const result=await confirmationResult.confirm(code);const u=result.user;const userRef=doc(db,"users",u.uid);const snap=await getDoc(userRef);const typedName=document.getElementById("authName").value.trim();if(!snap.exists()){const name=typedName||prompt("আপনার নাম লিখুন")||"গ্রাহক";await setDoc(userRef,{uid:u.uid,name,phone:u.phoneNumber,createdAt:new Date().toISOString()})}else if(authMode==="register"&&typedName){await setDoc(userRef,{name:typedName,phone:u.phoneNumber},{merge:true})}toast("সফলভাবে প্রবেশ করেছেন");}catch(err){console.error(err);toast(firebaseMessage(err))}finally{btn.disabled=false;btn.textContent="OTP যাচাই করে প্রবেশ করুন"}};
-  window.resetOtp=()=>{confirmationResult=null;document.getElementById("otpBox").style.display="none";document.getElementById("authPhone").disabled=false;document.getElementById("authName").disabled=false;document.getElementById("otpCode").value="";if(recaptchaVerifier){try{recaptchaVerifier.clear()}catch{}recaptchaVerifier=null}};
-  function firebaseMessage(err){const code=err?.code||"";if(code.includes("invalid-phone-number"))return "মোবাইল নম্বরটি সঠিক নয়";if(code.includes("too-many-requests"))return "অনেকবার চেষ্টা হয়েছে। পরে আবার চেষ্টা করুন";if(code.includes("captcha-check-failed"))return "reCAPTCHA যাচাই হয়নি। আবার চেষ্টা করুন";if(code.includes("invalid-verification-code"))return "OTP সঠিক নয়";if(code.includes("code-expired"))return "OTP-এর মেয়াদ শেষ। নতুন OTP নিন";if(code.includes("unauthorized-domain"))return "এই ওয়েবসাইটের ডোমেইন Firebase Authentication-এ অনুমোদিত নয়";if(code.includes("operation-not-allowed"))return "Firebase Console-এ Phone sign-in চালু করা হয়নি";return err?.message||"সমস্যা হয়েছে। আবার চেষ্টা করুন"}
-  onAuthStateChanged(auth,async user=>{if(user){currentUser=user;try{const snap=await getDoc(doc(db,"users",user.uid));userProfile=snap.exists()?snap.data():{name:"গ্রাহক",phone:user.phoneNumber};if(!snap.exists())await setDoc(doc(db,"users",user.uid),{uid:user.uid,name:userProfile.name,phone:user.phoneNumber,createdAt:new Date().toISOString()},{merge:true});cart=get("urban_cart_"+user.uid,{});document.getElementById("authScreen").style.display="none";document.getElementById("app").style.display="block";startApp()}catch(err){console.error(err);toast("প্রোফাইল লোড হয়নি: "+firebaseMessage(err))}}else{currentUser=null;userProfile=null;document.getElementById("app").style.display="none";document.getElementById("authScreen").style.display="grid"}});
-  async function logout(){try{await signOut(auth);cart={};toast("লগআউট হয়েছে")}catch(err){toast(firebaseMessage(err))}}window.logout=logout;
-  function startApp(){document.getElementById("greeting").textContent="স্বাগতম, "+(userProfile.name||"গ্রাহক")+"!";document.getElementById("profileName").textContent=userProfile.name||"গ্রাহক";document.getElementById("profilePhone").textContent=currentUser.phoneNumber||"";renderCategories();renderProducts();renderCart();renderOrders();updateProfile();showPage("home")}
-  function renderCategories(){const cats=["সব",...new Set(PRODUCTS.map(p=>p.cat))];document.getElementById("categoryChips").innerHTML=cats.map(c=>`<button class="chip ${c===activeCategory?"active":""}" onclick="chooseCategory('${esc(c)}')">${esc(c)}</button>`).join("")}
-  window.chooseCategory=c=>{activeCategory=c;renderCategories();renderProducts()};
-  function renderProducts(){const q=(document.getElementById("searchInput")?.value||"").toLowerCase();const list=PRODUCTS.filter(p=>(activeCategory==="সব"||p.cat===activeCategory)&&(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)));document.getElementById("productCount").textContent=list.length+"টি পণ্য";document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`<article class="product"><div class="pic">${p.emoji}</div><div class="info"><h4>${esc(p.name)}</h4><p>${esc(p.desc)}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">+ যোগ</button></div></div></article>`).join(""):`<div class="empty" style="grid-column:1/-1">কোনো আইসক্রিম পাওয়া যায়নি</div>`}
-  window.renderProducts=renderProducts;
-  window.addToCart=id=>{cart[id]=(cart[id]||0)+1;saveCart();renderCart();toast("কার্টে যোগ হয়েছে 🍦")};
-  function saveCart(){if(!currentUser)return;put("urban_cart_"+currentUser.uid,cart);document.getElementById("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0)}
-  function cartTotal(){return Object.entries(cart).reduce((sum,[id,q])=>{const p=PRODUCTS.find(x=>x.id===Number(id));return sum+(p?p.price*q:0)},0)}
-  function renderCart(){if(!currentUser)return;cart=get("urban_cart_"+currentUser.uid,cart);const entries=Object.entries(cart).filter(([id,q])=>q>0);document.getElementById("cartCount").textContent=entries.reduce((a,[id,q])=>a+q,0);const box=document.getElementById("cartItems"),summary=document.getElementById("cartSummary");if(!entries.length){box.innerHTML='<div class="empty"><div class="big">🛒</div>আপনার কার্ট এখনো খালি<br><button class="primary" style="margin-top:17px;max-width:220px" onclick="showPage(\'home\')">আইসক্রিম দেখুন</button></div>';summary.innerHTML="";return}box.innerHTML=entries.map(([id,q])=>{const p=PRODUCTS.find(x=>x.id===Number(id));return `<div class="card row"><div class="cartitem"><div class="thumb">${p.emoji}</div><div><b>${esc(p.name)}</b><div class="muted">${money(p.price)} × ${q}</div><b class="price">${money(p.price*q)}</b></div></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button><b>${q}</b><button onclick="changeQty(${id},1)">+</button></div></div>`}).join("");summary.innerHTML=`<div class="card"><div class="row"><span>সাবটোটাল</span><b>${money(cartTotal())}</b></div><div class="row" style="margin-top:9px"><span>ডেলিভারি চার্জ</span><span class="muted">অ্যাডমিন নিশ্চিত করবে</span></div><div class="row total"><b>পণ্যের মোট</b><b class="price">${money(cartTotal())}</b></div><button class="primary" style="margin-top:14px" onclick="goCheckout()">ঠিকানা দিয়ে অর্ডার করুন</button></div>`}
-  window.changeQty=(id,delta)=>{cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];saveCart();renderCart()};
-  window.goCheckout=()=>{if(!Object.keys(cart).length){toast("আগে কার্টে আইসক্রিম যোগ করুন");return}document.getElementById("deliveryName").value=userProfile.name||"";document.getElementById("deliveryPhone").value=(currentUser.phoneNumber||"").replace(/^\+88/,"");document.getElementById("checkoutTotal").innerHTML=`<div class="row"><b>পণ্যের মোট</b><b class="price">${money(cartTotal())}</b></div><div class="muted" style="margin-top:6px">ডেলিভারি চার্জ অর্ডার নিশ্চিত করার আগে জানানো হবে।</div>`;showPage("checkout")};
-  document.getElementById("checkoutForm").addEventListener("submit",async e=>{e.preventDefault();if(!Object.keys(cart).length){toast("কার্ট খালি");return}const btn=e.submitter;btn.disabled=true;btn.textContent="অর্ডার জমা হচ্ছে...";try{const items=Object.entries(cart).map(([id,q])=>{const p=PRODUCTS.find(x=>x.id===Number(id));return{name:p.name,emoji:p.emoji,price:p.price,qty:q}});const order={userId:currentUser.uid,customerName:document.getElementById("deliveryName").value.trim(),phone:document.getElementById("deliveryPhone").value.trim(),items,total:cartTotal(),address:{district:document.getElementById("district").value.trim(),thana:document.getElementById("areaThana").value.trim(),locality:document.getElementById("locality").value.trim(),full:document.getElementById("fullAddress").value.trim(),instructions:document.getElementById("instructions").value.trim()},payment:"Cash on Delivery",status:"নতুন অর্ডার",createdAt:new Date().toISOString()};const ref=await addDoc(collection(db,"orders"),order);cart={};saveCart();renderCart();e.target.reset();await renderOrders();updateProfile();toast("অর্ডার গ্রহণ করা হয়েছে! অর্ডার: "+ref.id.slice(-6));showPage("orders")}catch(err){console.error(err);toast("অর্ডার জমা হয়নি: "+firebaseMessage(err))}finally{btn.disabled=false;btn.textContent="অর্ডার কনফার্ম করুন"}});
-  async function renderOrders(){if(!currentUser)return;const box=document.getElementById("ordersList");box.innerHTML='<div class="empty">অর্ডার লোড হচ্ছে...</div>';try{const q=query(collection(db,"orders"),where("userId","==",currentUser.uid));const snap=await getDocs(q);const orders=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));box.innerHTML=orders.length?orders.map(o=>`<div class="card"><div class="row"><b>অর্ডার #${esc(o.id.slice(-8))}</b><span class="orderstatus">${esc(o.status||"নতুন অর্ডার")}</span></div><div class="muted" style="margin:7px 0">${o.createdAt?new Date(o.createdAt).toLocaleString("bn-BD"):""}</div>${(o.items||[]).map(i=>`<div class="row" style="font-size:13px;margin:7px 0"><span>${esc(i.emoji)} ${esc(i.name)} × ${i.qty}</span><b>${money(i.price*i.qty)}</b></div>`).join("")}<div class="row total"><b>পণ্যের মোট</b><b class="price">${money(o.total)}</b></div><div class="muted" style="margin-top:10px">💵 ${esc(o.payment)}</div><div class="muted" style="margin-top:7px">📍 ${esc(o.address?.district)}, ${esc(o.address?.thana)}, ${esc(o.address?.locality)}, ${esc(o.address?.full)}</div></div>`).join(""):'<div class="empty"><div class="big">📦</div>এখনো কোনো অর্ডার করেননি</div>'}catch(err){console.error(err);box.innerHTML='<div class="empty">অর্ডার লোড করা যায়নি। Firestore Rules পরীক্ষা করুন।</div>'}}
-  async function updateProfile(){if(!currentUser)return;try{const snap=await getDocs(query(collection(db,"orders"),where("userId","==",currentUser.uid)));document.getElementById("profileOrders").textContent=snap.size}catch{document.getElementById("profileOrders").textContent="—"}}
-  window.showPage=p=>{page=p;document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(p+"Page").classList.add("active");document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===p));if(p==="cart")renderCart();if(p==="orders")renderOrders();if(p==="profile")updateProfile();window.scrollTo(0,0)};
+
+  const money = n => "৳" + Number(n).toLocaleString("bn-BD");
+  let authMode = "login", currentUser = null, userProfile = null, activeCategory = "সব", cart = {}, page = "home";
+  
+  const get = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d } catch { return d } };
+  const put = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  
+  function toast(msg) {
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.style.display = "block";
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => el.style.display = "none", 2800);
+  }
+
+  window.setAuthMode = mode => {
+    authMode = mode;
+    document.getElementById("loginTab").classList.toggle("active", mode === "login");
+    document.getElementById("registerTab").classList.toggle("active", mode === "register");
+    document.getElementById("nameField").style.display = mode === "register" ? "block" : "none";
+    document.getElementById("authSubmitBtn").textContent = mode === "login" ? "লগইন করুন" : "অ্যাকাউন্ট তৈরি করুন";
+  };
+
+  document.getElementById("authForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = document.getElementById("authEmail").value.trim();
+    const password = document.getElementById("authPassword").value.trim();
+    const name = document.getElementById("authName").value.trim();
+    const btn = document.getElementById("authSubmitBtn");
+    btn.disabled = true;
+    
+    try {
+      if (authMode === "register") {
+        if (!name) throw new Error("আপনার নাম লিখুন");
+        const res = await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, "users", res.user.uid), { uid: res.user.uid, name, email, createdAt: new Date().toISOString() });
+        toast("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+        toast("সফলভাবে প্রবেশ করেছেন!");
+      }
+    } catch (err) {
+      console.error(err);
+      toast(firebaseMessage(err));
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  window.loginWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const res = await signInWithPopup(auth, provider);
+      const user = res.user;
+      const userRef = doc(db, "users", user.uid);
+      const snap = await getDoc(userRef);
+      if (!snap.exists()) {
+        await setDoc(userRef, { uid: user.uid, name: user.displayName || "গ্রাহক", email: user.email, createdAt: new Date().toISOString() });
+      }
+      toast("গুগল দিয়ে সফলভাবে প্রবেশ করেছেন!");
+    } catch (err) {
+      console.error(err);
+      toast(firebaseMessage(err));
+    }
+  };
+
+  function firebaseMessage(err) {
+    const code = err?.code || "";
+    if (code.includes("invalid-email")) return "ইমেল ঠিকানাটি সঠিক নয়";
+    if (code.includes("user-not-found") || code.includes("invalid-credential")) return "ইমেল অথবা পাসওয়ার্ড ভুল রয়েছে";
+    if (code.includes("wrong-password"))return "ভুল পাসওয়ার্ড দেওয়া হয়েছে";
+    if (code.includes("email-already-in-use")) return "এই ইমেল দিয়ে ইতিমধ্যে অ্যাকাউন্ট রয়েছে";
+    if (code.includes("weak-password")) return "পাসওয়ার্ড অন্তত ৬ অক্ষরের হতে হবে";
+    return err?.message || "সমস্যা হয়েছে। আবার চেষ্টা করুন";
+  }
+
+  onAuthStateChanged(auth, async user => {
+    if (user) {
+      currentUser = user;
+      try {
+        const snap = await getDoc(doc(db, "users", user.uid));
+        userProfile = snap.exists() ? snap.data() : { name: user.displayName || "গ্রাহক", email: user.email };
+        if (!snap.exists()) {
+          await setDoc(doc(db, "users", user.uid), { uid: user.uid, name: userProfile.name, email: user.email, createdAt: new Date().toISOString() }, { merge: true });
+        }
+        cart = get("urban_cart_" + user.uid, {});
+        document.getElementById("authScreen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+        startApp();
+      } catch (err) {
+        console.error(err);
+        toast("প্রোফাইল লোড হয়নি");
+      }
+    } else {
+      currentUser = null;
+      userProfile = null;
+      document.getElementById("app").style.display = "none";
+      document.getElementById("authScreen").style.display = "grid";
+    }
+  });
+
+  async function logout() {
+    try { await signOut(auth); cart = {}; toast("লগআউট হয়েছে"); } catch (err) { toast(firebaseMessage(err)); }
+  }
+  window.logout = logout;
+
+  function startApp() {
+    document.getElementById("greeting").textContent = "স্বাগতম, " + (userProfile.name || "গ্রাহক") + "!";
+    document.getElementById("profileName").textContent = userProfile.name || "গ্রাহক";
+    document.getElementById("profileEmail").textContent = currentUser.email || "";
+    renderCategories();
+    renderProducts();
+    renderCart();
+    renderOrders();
+    updateProfile();
+    showPage("home");
+  }
+
+  function renderCategories() {
+    const cats = ["সব", ...new Set(PRODUCTS.map(p => p.cat))];
+    document.getElementById("categoryChips").innerHTML = cats.map(c => `<button class="chip ${c === activeCategory ? "active" : ""}" onclick="chooseCategory('${esc(c)}')">${esc(c)}</button>`).join("");
+  }
+  window.chooseCategory = c => { activeCategory = c; renderCategories(); renderProducts(); };
+
+  function renderProducts() {
+    const q = (document.getElementById("searchInput")?.value || "").toLowerCase();
+    const list = PRODUCTS.filter(p => (activeCategory === "সব" || p.cat === activeCategory) && (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)));
+    document.getElementById("productCount").textContent = list.length + "টি পণ্য";
+    document.getElementById("productGrid").innerHTML = list.length ? list.map(p => `<article class="product"><div class="pic">${p.emoji}</div><div class="info"><h4>${esc(p.name)}</h4><p>${esc(p.desc)}</p><div class="price-row"><span class="price">${money(p.price)}</span><button class="add" onclick="addToCart(${p.id})">+ যোগ</button></div></div></article>`).join("") : `<div class="empty" style="grid-column:1/-1">কোনো আইসক্রিম পাওয়া যায়নি</div>`;
+  }
+  window.renderProducts = renderProducts;
+
+  window.addToCart = id => {
+    cart[id] = (cart[id] || 0) + 1;
+    saveCart();
+    renderCart();
+    toast("কার্টে যোগ হয়েছে 🍦");
+  };
+
+  function saveCart() {
+    if (!currentUser) return;
+    put("urban_cart_" + currentUser.uid, cart);
+    document.getElementById("cartCount").textContent = Object.values(cart).reduce((a, b) => a + b, 0);
+  }
+
+  function cartTotal() {
+    return Object.entries(cart).reduce((sum, [id, q]) => {
+      const p = PRODUCTS.find(x => x.id === Number(id));
+      return sum + (p ? p.price * q : 0);
+    }, 0);
+  }
+
+  function renderCart() {
+    if (!currentUser) return;
+    cart = get("urban_cart_" + currentUser.uid, cart);
+    const entries = Object.entries(cart).filter(([id, q]) => q > 0);
+    document.getElementById("cartCount").textContent = entries.reduce((a, [id, q]) => a + q, 0);
+    const box = document.getElementById("cartItems"), summary = document.getElementById("cartSummary");
+    if (!entries.length) {
+      box.innerHTML = '<div class="empty"><div class="big">🛒</div>আপনার কার্ট এখনো খালি<br><button class="primary" style="margin-top:17px;max-width:220px" onclick="showPage(\'home\')">আইসক্রিম দেখুন</button></div>';
+      summary.innerHTML = "";
+      return;
+    }
+    box.innerHTML = entries.map(([id, q]) => {
+      const p = PRODUCTS.find(x => x.id === Number(id));
+      return `<div class="card row"><div class="cartitem"><div class="thumb">${p.emoji}</div><div><b>${esc(p.name)}</b><div class="muted">${money(p.price)} × ${q}</div><b class="price">${money(p.price * q)}</b></div></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button><b>${q}</b><button onclick="changeQty(${id},1)">+</button></div></div>`;
+    }).join("");
+    summary.innerHTML = `<div class="card"><div class="row"><span>সাবটোটাল</span><b>${money(cartTotal())}</b></div><div class="row" style="margin-top:9px"><span>ডেলিভারি চার্জ</span><span class="muted">অ্যাডমিন নিশ্চিত করবে</span></div><div class="row total"><b>পণ্যের মোট</b><b class="price">${money(cartTotal())}</b></div><button class="primary" style="margin-top:14px" onclick="goCheckout()">ঠিকানা দিয়ে অর্ডার করুন</button></div>`;
+  }
+  window.changeQty = (id, delta) => { cart[id] = (cart[id] || 0) + delta; if (cart[id] <= 0) delete cart[id]; saveCart(); renderCart(); };
+  
+  window.goCheckout = () => {
+    if (!Object.keys(cart).length) { toast("আগে কার্টে আইসক্রিম যোগ করুন"); return; }
+    document.getElementById("deliveryName").value = userProfile.name || "";
+    document.getElementById("checkoutTotal").innerHTML = `<div class="row"><b>পণ্যের মোট</b><b class="price">${money(cartTotal())}</b></div><div class="muted" style="margin-top:6px">ডেলিভারি চার্জ অর্ডার নিশ্চিত করার আগে জানানো হবে।</div>`;
+    showPage("checkout");
+  };
+
+  document.getElementById("checkoutForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!Object.keys(cart).length) { toast("কার্ট খালি"); return; }
+    const btn = e.submitter;
+    btn.disabled = true;
+    btn.textContent = "অর্ডার জমা হচ্ছে...";
+    try {
+      const items = Object.entries(cart).map(([id, q]) => {
+        const p = PRODUCTS.find(x => x.id === Number(id));
+        return { name: p.name, emoji: p.emoji, price: p.price, qty: q };
+      });
+      const order = {
+        userId: currentUser.uid,
+        customerName: document.getElementById("deliveryName").value.trim(),
+        phone: document.getElementById("deliveryPhone").value.trim(),
+        items,
+        total: cartTotal(),
+        address: {
+          district: document.getElementById("district").value.trim(),
+          thana: document.getElementById("areaThana").value.trim(),
+          locality: document.getElementById("locality").value.trim(),
+          full: document.getElementById("fullAddress").value.trim(),
+          instructions: document.getElementById("instructions").value.trim()
+        },
+        payment: "Cash on Delivery",
+        status: "নতুন অর্ডার",
+        createdAt: new Date().toISOString()
+      };
+      const ref = await addDoc(collection(db, "orders"), order);
+      cart = {};
+      saveCart();
+      renderCart();
+      e.target.reset();
+      await renderOrders();
+      updateProfile();
+      toast("অর্ডার গ্রহণ করা হয়েছে! অর্ডার: " + ref.id.slice(-6));
+      showPage("orders");
+    } catch (err) {
+      console.error(err);
+      toast("অর্ডার জমা হয়নি: " + firebaseMessage(err));
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "অর্ডার কনফার্ম করুন";
+    }
+  });
+
+  async function renderOrders() {
+    if (!currentUser) return;
+    const box = document.getElementById("ordersList");
+    box.innerHTML = '<div class="empty">অর্ডার লোড হচ্ছে...</div>';
+    try {
+      const q = query(collection(db, "orders"), where("userId", "==", currentUser.uid));
+      const snap = await getDocs(q);
+      const orders = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+      box.innerHTML = orders.length ? orders.map(o => `<div class="card"><div class="row"><b>অর্ডার #${esc(o.id.slice(-8))}</b><span class="orderstatus">${esc(o.status || "নতুন অর্ডার")}</span></div><div class="muted" style="margin:7px 0">${o.createdAt ? new Date(o.createdAt).toLocaleString("bn-BD") : ""}</div>${(o.items || []).map(i => `<div class="row" style="font-size:13px;margin:7px 0"><span>${esc(i.emoji)} ${esc(i.name)} × ${i.qty}</span><b>${money(i.price * i.qty)}</b></div>`).join("")}<div class="row total"><b>পণ্যের মোট</b><b class="price">${money(o.total)}</b></div><div class="muted" style="margin-top:10px">💵 ${esc(o.payment)}</div><div class="muted" style="margin-top:7px">📍 ${esc(o.address?.district)}, ${esc(o.address?.thana)}, ${esc(o.address?.locality)}, ${esc(o.address?.full)}</div></div>`).join("") : '<div class="empty"><div class="big">📦</div>এখনো কোনো অর্ডার করেননি</div>';
+    } catch (err) {
+      console.error(err);
+      box.innerHTML = '<div class="empty">অর্ডার লোড করা যায়নি।</div>';
+    }
+  }
+
+  async function updateProfile() {
+    if (!currentUser) return;
+    try {
+      const snap = await getDocs(query(collection(db, "orders"), where("userId", "==", currentUser.uid)));
+      document.getElementById("profileOrders").textContent = snap.size;
+    } catch {
+      document.getElementById("profileOrders").textContent = "—";
+    }
+  }
+
+  window.showPage = p => {
+    page = p;
+    document.querySelectorAll(".page").forEach(x => x.classList.remove("active"));
+    document.getElementById(p + "Page").classList.add("active");
+    document.querySelectorAll(".navbtn").forEach(x => x.classList.toggle("active", x.dataset.page === p));
+    if (p === "cart") renderCart();
+    if (p === "orders") renderOrders();
+    if (p === "profile") updateProfile();
+    window.scrollTo(0, 0);
+  };
 </script>
 </body>
 </html>
